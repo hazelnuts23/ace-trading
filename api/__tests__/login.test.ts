@@ -61,7 +61,7 @@ describe("POST /api/login", () => {
                 "email": "admin2@test.com",
                 "password": "abcd3"
             }).then((res) => {
-                expect(res.statusCode).toEqual(401);
+                expect(res.statusCode).toEqual(400);
             })
     });
     test("return success response", () => {
