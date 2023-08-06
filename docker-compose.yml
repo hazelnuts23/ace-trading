@@ -1,0 +1,56 @@
+version: '3.7'
+services:
+  ace_web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    container_name: ace_web
+    restart: always
+    volumes:
+      - "./web:/web"
+      - "/web/node_modules"
+    env_file:
+      - "./web/.env"
+    ports:
+      - "8080:3000"
+    networks:
+      - ace-network
+  ace_api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    container_name: ace_api
+    restart: always
+    volumes:
+      - "./api:/api"
+      - "/api/node_modules"
+    env_file:
+      - "./api/.env"
+    ports:
+      - "8081:3000"
+    networks:
+      - ace-network
+    depends_on:
+      - db
+  db:
+    container_name: ace_postgres
+    image: "postgres:14.8-alpine"
+    restart: always
+    networks:
+      - ace-network
+    volumes:
+      - "local-pgdata:/var/lib/postgresql/data/pgdata"
+      - "./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ace
+      POSTGRES_USER: ace-user
+      POSTGRES_PASSWORD: zMYTAKG6QjM
+      PGDATA: /var/lib/postgresql/data/pgdata
+networks:
+  ace-network:
+
+volumes:
+  local-pgdata:
+    external: false

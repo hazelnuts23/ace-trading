@@ -1,0 +1,4 @@
+CREATE TABLE "public"."user" ("id" serial NOT NULL,"email" varchar(320) NOT NULL,"password" varchar(320) NOT NULL,"name" varchar(320) NOT NULL,"status" int2 NOT NULL,"created_at" timestamptz DEFAULT NOW(),"last_login" timestamp, PRIMARY KEY ("id"));
+CREATE TABLE "public"."stock" ("id" serial, "ticker_name" varchar(10) NOT NULL, "open" decimal(10,7) NOT NULL DEFAULT NULL,"high" decimal(10,7) NOT NULL DEFAULT NULL,"low" decimal(10,7) NOT NULL DEFAULT NULL,"close" decimal(10,7) NOT NULL DEFAULT NULL,"volume" int8 NOT NULL,"dividends" decimal(10,2) NOT NULL,"stock_splits" decimal(10,2) NOT NULL, "date" timestamp, PRIMARY KEY ("id"));
+CREATE TABLE "public"."ticker" ("id" serial,"name" varchar(10) NOT NULL, PRIMARY KEY ("id"));
+CREATE INDEX "ticker_name_idx" ON "public"."stock" USING BTREE ("ticker_name");

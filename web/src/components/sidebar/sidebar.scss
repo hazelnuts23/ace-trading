@@ -1,0 +1,43 @@
+.sidebar{
+  border-right: 2px solid #002A43;
+  min-height: 100vh;
+  flex: 1;
+  .top{
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #002A43;
+    .logo{
+      font-size: 16pt;
+      font-weight: bold;
+      color: #935DD0;
+    }
+  }
+  .filter{
+    ul{
+      list-style: none;
+      .title{
+        font-size: 9pt;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+      li {
+        font-size: 11pt;
+        padding: 5px;
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+            color: #fff;
+          }
+          &:visited{
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
