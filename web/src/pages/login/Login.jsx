@@ -52,11 +52,9 @@ const Login = () => {
                     <ErrorMessage/>
                     <h3>Welcome to Ace Admin, Please Sign In</h3>
                     <label>
-                        <p>Email</p>
                         <input placeholder="email" type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
                     </label>
                     <label>
-                        <p>Password</p>
                         <input placeholder="password" type="password" name="password"
                                onChange={(e) => setPassword(e.target.value)}/>
                     </label>
